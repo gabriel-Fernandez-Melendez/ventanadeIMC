@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Ventana_IMC {
@@ -92,6 +94,17 @@ public class Ventana_IMC {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Calcular IMC");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String altura = textField.getText();
+				float altura_num = Float.parseFloat(altura);
+				int peso = slider.getValue();
+				float icm = peso/(altura_num*altura_num);
+				
+				textField_2.setText(""+icm);
+				
+			}
+		});
 		btnNewButton.setBounds(282, 174, 184, 23);
 		frame.getContentPane().add(btnNewButton);
 		
