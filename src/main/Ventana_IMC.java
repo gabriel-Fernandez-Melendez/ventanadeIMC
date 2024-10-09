@@ -9,6 +9,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JSlider;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -16,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 
 
@@ -97,11 +100,17 @@ public class Ventana_IMC {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String altura = textField.getText();
+				if(altura != "^\\d(\\.\\d)*$");{
+						int informationMessage = JOptionPane.INFORMATION_MESSAGE;
+				}
 				float altura_num = Float.parseFloat(altura);
 				int peso = slider.getValue();
 				float icm = peso/(altura_num*altura_num);
-				
-				textField_2.setText(""+icm);
+				//el formmatter nos permite mostrar el dato con dos decimales
+				DecimalFormat df = new DecimalFormat();
+				df.setMaximumFractionDigits(2);
+				String formateado = df.format(icm);
+				textField_2.setText(""+formateado);
 				
 			}
 		});
