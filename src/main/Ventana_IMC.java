@@ -98,11 +98,19 @@ public class Ventana_IMC {
 		
 		JButton btnNewButton = new JButton("Calcular IMC");
 		btnNewButton.addActionListener(new ActionListener() {
+			boolean val =false;
 			public void actionPerformed(ActionEvent e) {
 				String altura = textField.getText();
-				if(altura != "^\\d(\\.\\d)*$");{
-						int informationMessage = JOptionPane.INFORMATION_MESSAGE;
-				}
+				//esto nos da la validacion del sistema
+			    if(altura.contains(".")||altura.matches("^[0-9]+$")) {
+			    	val=true;
+			    }
+			    else {
+					JOptionPane.showMessageDialog(frame,"introduzca en numero dividido por '.' ");
+
+			    }
+				
+				if(val) {			
 				float altura_num = Float.parseFloat(altura);
 				int peso = slider.getValue();
 				float icm = peso/(altura_num*altura_num);
@@ -111,7 +119,7 @@ public class Ventana_IMC {
 				df.setMaximumFractionDigits(2);
 				String formateado = df.format(icm);
 				textField_2.setText(""+formateado);
-				
+			}
 			}
 		});
 		btnNewButton.setBounds(282, 174, 184, 23);
