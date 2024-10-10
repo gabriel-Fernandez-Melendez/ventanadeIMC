@@ -62,6 +62,7 @@ public class Ventana_IMC {
 		frame.getContentPane().setLayout(null);
 		
 		JSlider slider = new JSlider();
+		slider.setMinorTickSpacing(1);
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				int sleepSense = slider.getValue();
